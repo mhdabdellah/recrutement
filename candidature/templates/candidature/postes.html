@@ -1,0 +1,87 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3team Technologie</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <!-- font awesome style -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+</head>
+<body>
+  <nav class="navbar navbar-inverse bg-primary text-white">
+    <div class="container-fluid">
+      <div class="navbar-header" >
+        Recrutement 3team Technologie 
+      </div>
+      <!-- <div class="nav navbar-nav text-white ">
+        <a class="text-white" href="/admin">
+            Connecter en tant qu'admin
+        </a>
+      </div> -->
+      <ul class="nav navbar-nav ">
+        <li class="active">
+            <a class="text-white" href="/admin">
+                Connecter en tant qu'admin
+            </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<section class="catagory_section layout_padding">
+    <div class="catagory_container">
+      <div class="container ">
+        <div class="heading_container heading_center text-center">
+          <h2>
+             Les Postes Disponible
+          </h2>
+        </div>
+        <div class="row">
+        {% for poste in postes %}
+          <div class="col-sm-6 col-md-4 ">
+            <div class="box ">
+              <div class="card" style="width:400px">
+    
+                <div class="card-body">
+                  <h3 class="card-title">{{ poste.title}} </h3>
+                  <p class="card-text" >
+                    
+                    <hr>
+                    Departement : {{ poste.departement }}
+                    <hr>
+                    Nombre D'employee demandée : {{ poste.objectif_a_recruter }}
+                    <hr>
+                    Lieu de travail : {{ poste.lieu_travail }}
+                    <hr>
+                    Type D'emploi : {{ poste.type_emploi }}
+                    <hr>
+                    Email : {{ poste.email }}
+    
+                  </p>
+                  <!-- <a href="#" class="btn btn-primary">Postuler</a> -->
+                  <a href="{% url 'candidature:candidatureform' poste.id %}" class="btn btn-primary">Postuler</a>
+                </div>
+          </div>
+          {% endfor %}
+
+          
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+</body>
+</html>

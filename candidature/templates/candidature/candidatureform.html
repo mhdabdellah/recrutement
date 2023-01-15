@@ -1,0 +1,91 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3team Technologie</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <!-- font awesome style -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+</head>
+<body class = 'bg-secondary'>
+
+    <nav class="navbar navbar-inverse bg-primary text-white">
+        <div class="container-fluid">
+          <div class="navbar-header" >
+            Recrutement 3team Technologie 
+          </div>
+          <!-- <div class="nav navbar-nav text-white ">
+            <a class="text-white" href="/admin">
+                Connecter en tant qu'admin
+            </a>
+          </div> -->
+          <ul class="nav navbar-nav ">
+            <li class="active">
+                <a class="text-white" href="/admin">
+                    Connecter en tant qu'admin
+                </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+
+           <section class="contact_section layout_padding">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-10 offset-sm-1 ">
+                <!-- <div class="col-md-6 "> -->
+                  <div class="heading_container ">
+                    <h2 class="text-center text-white">
+                        Envoyez votre Candidature
+                    </h2>
+                  </div>
+                  <div class="card">
+                  <div class="card-body">
+                  <div class="modal-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{message.tags}}">
+                            {{message}}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form method="POST"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{candidature_Form|crispy}}
+                        
+                        <!-- <div class="btn-box">
+                        <button>
+                            Register
+                        </button>
+                        </div> -->
+                        <br>
+                        <div class="mt-6">
+                            <button type="submit" class="btn btn-primary p-2 pl-4 pr-4">Add</button>
+                            <button type="reset" class="btn btn-outline-secondary p-2">Cancel</button>
+                        </div>
+                    </form>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        
+</body>
+</html>

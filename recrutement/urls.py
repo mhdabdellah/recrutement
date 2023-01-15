@@ -23,7 +23,7 @@ urlpatterns = [
     # path('poste/', include('poste.urls')),
     # path("poste/", include("poste.urls")),
     # path("recruteur/", include("recruteur.urls")),
-    # path("candidature/", include("candidature.urls"))
+    path("", include("candidature.urls"))
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)

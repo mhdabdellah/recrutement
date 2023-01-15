@@ -1,11 +1,11 @@
 from django.contrib import admin
-
+from django.contrib.auth.models import Group
 from poste.models import Poste
 
 # Register your models here.
 
-admin.site.site_header = "Recrutement Mhd Abdellahi Tech"
-admin.site.site_title = "Recrutement Mhd Abdellahi Tech"
+admin.site.site_header = "Recrutement 3team Technologie"
+admin.site.site_title = "Recrutement 3team Technologie"
 
 
 class  PosteAdmin(admin.ModelAdmin):
@@ -20,3 +20,4 @@ class  PosteAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Poste,PosteAdmin)
+admin.site.unregister(Group)
