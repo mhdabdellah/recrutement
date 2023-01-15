@@ -24,13 +24,13 @@ def candidatureForm(request,poste_id):
     if request.method == 'POST':
         candidature_Form = CandidatureForm(request.POST, request.FILES)
         if candidature_Form.is_valid():
-            form = form.save(commit=False)
-            form.poste = poste
+            candidature_Form = candidature_Form.save(commit=False)
+            candidature_Form.poste = poste
             candidature_Form.save()
             messages.success( 
                 # {myform.nom}/{myform.prenom}
                 request, f"Felicitations Votre Candidature est bien Récu")
-            return redirect(reverse('candidature:postes'))
+            return redirect(reverse('candidature:candidatureform' ,kwargs={'poste_id': poste_id}))
     else:
         candidature_Form = CandidatureForm()
         context={

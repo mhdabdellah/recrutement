@@ -6,8 +6,8 @@ from .models import Candidature
 class  CandidatureAdmin(admin.ModelAdmin):
     fields = ['poste','nom','prenom','email','telephone','cv']
     list_display = ['poste','nom','prenom','email','telephone','cv']
-    list_display_links = ['poste']
-    # list_filter = ['poste','nom','prenom','email','telephone']
+    # list_display_links = ['poste']
+    list_filter = ['poste']
     search_fields = ['poste','nom','prenom','email','telephone']
 
 
